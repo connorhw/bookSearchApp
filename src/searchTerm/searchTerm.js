@@ -1,7 +1,14 @@
 import React, {Component} from 'react';
 
 class SearchTerm extends Component {
+    /*
+    changeTerm(value) {
+        if(value === ''){
+            this.props.termChangeHandler(null);
+        }
 
+    }
+*/
     render(){
 
         return (

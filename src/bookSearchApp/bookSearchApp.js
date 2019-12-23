@@ -10,25 +10,28 @@ class BookSearchApp extends Component {
         this.state = {
             searchTerm: 'flowers'
         };
-    }
-
+    
     /* GET: key word search + in-author search
         https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=
     */
 
-    componentDidMount(searchTerm) {
-        const url = 'https://www.googleapis.com/books/v1/volumes?q='+searchTerm+'&key=AIzaSyACt9oHAQa--btrejsgHW6Fea_NAjDRWOY'
-        fetch(url)
-          .then(response => {
-              if(!response.ok) {
-                  throw new Error('Something went wrong, please try again later.')
-              }
-              return response;
-          })
-          .then(response => response.json())
-          .then(data => {
+    const url = 'https://www.googleapis.com/books/v1/volumes?q='+this.state.searchTerm+'&key=AIzaSyACt9oHAQa--btrejsgHW6Fea_NAjDRWOY'
+    fetch(url)
+        .then(response => {
+            if(!response.ok) {
+                throw new Error('Something went wrong, please try again later.')
+            }
+            return response;
+        })
+        .then(response => response.json())
+        .then(data => {
             console.log(data);
-          });
+        });
+    
+    }
+
+    setSearchTerm(searchTerm) {
+        this.setState({ searchTerm });
     }
 
     render() {
@@ -36,7 +39,7 @@ class BookSearchApp extends Component {
             <div className='booksearch_app'>
                 <h1>Google Book Search</h1>
                 <SearchTerm 
-                  term={this.state.SearchTerm}/>
+                  termChangeHandler={searchTerm => this.setSearchTerm(searchTerm)}/>
                 <PrintType />
                 <BookType />
                 <BookList />
