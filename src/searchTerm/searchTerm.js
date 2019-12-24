@@ -19,10 +19,11 @@ class SearchTerm extends Component {
                       type='text' 
                       id='term' 
                       name='term'
-                      value={this.props.SearchTerm}>
+                      onClick={event => this.props.termChangeHandler(event.target.value)}>
                     </input>
                 <button>Search</button>
                 </form>
+                {console.log(this.props.termChangeHandler)}
             </div>
         );
     }
