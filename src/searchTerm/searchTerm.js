@@ -21,7 +21,7 @@ class SearchTerm extends Component {
                       name='term'
                       value={this.props.SearchTerm}>
                     </input>
-                    <button>Search</button>
+                <button>Search</button>
                 </form>
             </div>
         );
