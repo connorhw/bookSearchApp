@@ -38,6 +38,7 @@ class BookSearchApp extends Component {
         return (
             <div className='booksearch_app'>
                 <h1>Google Book Search</h1>
+                {console.log(this.state.SearchTerm)}
                 <SearchTerm 
                   termChangeHandler={searchTerm => this.setSearchTerm(searchTerm)}
                   />
