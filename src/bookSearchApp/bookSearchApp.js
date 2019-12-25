@@ -5,22 +5,28 @@ import BookType from '../bookType/bookType';
 import BookList from '../bookList/bookList';
 
 class BookSearchApp extends Component {
+    /*
     constructor(props) {
         super(props);
         this.state = {
             searchTerm: 'flowers'
-        };
-    
+        }
+    }
+    */
     /* GET: key word search + in-author search
         https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=
     */
+
+   // setSearchTerm(searchTerm) {
+       // this.setState({searchTerm})
+   // }
     
+/*
+    setSearchTerm(searchTerm) {
+        this.setState({ searchTerm });
     }
 
-    setSearchTerm(searchTerm) {
-        
-        this.setState({ searchTerm });
-        const url = 'https://www.googleapis.com/books/v1/volumes?q='+this.state.searchTerm+'&key=AIzaSyACt9oHAQa--btrejsgHW6Fea_NAjDRWOY'
+    const url = 'https://www.googleapis.com/books/v1/volumes?q='+searchTerm+'&key=AIzaSyACt9oHAQa--btrejsgHW6Fea_NAjDRWOY'
         fetch(url)
             .then(response => {
                 if(!response.ok) {
@@ -32,17 +38,15 @@ class BookSearchApp extends Component {
             .then(data => {
                 console.log(data);
             });
-    }
-
+*/
     render() {
+        
         return (
             <div className='booksearch_app'>
                 <h1>Google Book Search</h1>
-                {console.log(this.state.SearchTerm)}
-                <SearchTerm 
-                  termChangeHandler={searchTerm => this.setSearchTerm(searchTerm)}
-                  />
-                {console.log(this.state.SearchTerm)}
+                
+                <SearchTerm />
+                  
                 <PrintType />
                 <BookType />
                 <BookList />

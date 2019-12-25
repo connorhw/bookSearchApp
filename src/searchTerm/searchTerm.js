@@ -1,16 +1,32 @@
 import React, {Component} from 'react';
 
 class SearchTerm extends Component {
-    /*
-    changeTerm(value) {
-        if(value === ''){
-            this.props.termChangeHandler(null);
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchTerm: 'flowers'
         }
-
     }
-*/
-    render(){
 
+    setSearchTerm(searchTerm) {
+        this.setState({ searchTerm });
+    }
+    generateAPIurl(searchTerm) {
+        const url = 'https://www.googleapis.com/books/v1/volumes?q='+searchTerm+'&key=AIzaSyACt9oHAQa--btrejsgHW6Fea_NAjDRWOY'
+        fetch(url)
+            .then(response => {
+                if(!response.ok) {
+                    throw new Error('Something went wrong, please try again later.')
+                }
+                return response;
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            });
+    }
+
+    render(){
         return (
             <div className='term_selector'>
                 <form>
@@ -19,13 +35,15 @@ class SearchTerm extends Component {
                       type='text' 
                       id='term' 
                       name='term'
-                      value={this.props.SearchTerm}
-                      //onClick={event => this.props.termChangeHandler(event.target.value)}
+                      value={this.state.searchTerm}
+                      onChange={e => this.setSearchTerm(e.target.value)}
+                      //onClick={event => this.setSearchTerm(event.target.value)}
                       >
                     </input>
+                    {this.state.searchTerm}
                 <button>Search</button>
                 </form>
-                {/*console.log(this.props.termChangeHandler)*/}
+                
             </div>
         );
     }
