@@ -9,6 +9,7 @@ class SearchTerm extends Component {
         this.state = {
             searchTerm: 'flowers',
             printType: [],
+            data: [],
             
         }
     }
@@ -28,6 +29,7 @@ class SearchTerm extends Component {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                this.setState({data})
             });
     }
     onSubmit = e => {
@@ -49,7 +51,7 @@ class SearchTerm extends Component {
                  <button>Search</button>
                </form>
                 <PrintType 
-                    entireBookList={this.data}
+                    entireBookList={this.state.data}
                     />
              </div>
            );
