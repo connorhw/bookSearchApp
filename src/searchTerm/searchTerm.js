@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
+import PrintType from '../printType/printType';
+
+//import PrintType from '../printType/printType';
 
 class SearchTerm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchTerm: 'flowers'
+            searchTerm: 'flowers',
+            printType: [],
+            
         }
     }
 
@@ -43,6 +48,9 @@ class SearchTerm extends Component {
                    onChange={e => this.setSearchTerm(e.target.value)}/>
                  <button>Search</button>
                </form>
+                <PrintType 
+                    entireBookList={this.data}
+                    />
              </div>
            );
         }
