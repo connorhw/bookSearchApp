@@ -44,9 +44,7 @@ class BookSearchApp extends Component {
         return (
             <div className='booksearch_app'>
                 <h1>Google Book Search</h1>
-                
                 <SearchTerm />
-                  
                 <PrintType />
                 <BookType />
                 <BookList />

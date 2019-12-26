@@ -25,28 +25,28 @@ class SearchTerm extends Component {
                 console.log(data);
             });
     }
-
-    render(){
-        return (
-            <div className='term_selector'>
-                <form>
-                    <label htmlFor='term'>Search: </label>
-                    <input 
-                      type='text' 
-                      id='term' 
-                      name='term'
-                      value={this.state.searchTerm}
-                      onChange={e => this.setSearchTerm(e.target.value)}
-                      //onClick={event => this.setSearchTerm(event.target.value)}
-                      >
-                    </input>
-                    {this.state.searchTerm}
-                <button>Search</button>
-                </form>
-                
-            </div>
-        );
-    }
+    onSubmit = e => {
+           e.preventDefault();
+           this.generateAPIurl(this.state.searchTerm);
+         };
+       
+         render() {
+           return (
+             <div className="term_selector">
+               <form onSubmit={this.onSubmit}>
+                 <label htmlFor="term">Search: </label>
+                 <input
+                   type="text"
+                   id="term"
+                   name="term"
+                   value={this.state.searchTerm}
+                   onChange={e => this.setSearchTerm(e.target.value)}/>
+                 <button>Search</button>
+               </form>
+             </div>
+           );
+        }
+       
 }
 
 export default SearchTerm;
