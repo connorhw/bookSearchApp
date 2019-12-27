@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class BookType extends Component {
     
-    selectedOptionHandler(event) {
+    selectedOptionHandler = event => {
         console.log(event.target)
         this.props.setSelectedFilterOption(event.target.value)
     }

@@ -10,7 +10,7 @@ class SearchTerm extends Component {
             searchTerm: 'flowers',
             printType: [],
             data: [],
-            selected: null
+            selected: 'None'
             
         }
     }
@@ -23,7 +23,11 @@ class SearchTerm extends Component {
         this.setState({ searchTerm });
     }
     generateAPIurl(searchTerm) {
-        const url = 'https://www.googleapis.com/books/v1/volumes?q='+searchTerm+'&key=AIzaSyACt9oHAQa--btrejsgHW6Fea_NAjDRWOY'
+        let url = 'https://www.googleapis.com/books/v1/volumes?q='+searchTerm+'&key=AIzaSyACt9oHAQa--btrejsgHW6Fea_NAjDRWOY'
+        if (this.state.selected !== "None") {
+               let filterSegment = "&filter=" + this.state.selected;
+               url += filterSegment;
+        }
         fetch(url)
             .then(response => {
                 if(!response.ok) {
@@ -60,7 +64,7 @@ class SearchTerm extends Component {
                </form><br />
                 <BookType 
                     entireBookList={this.state.data}
-                    setSelectedFilterOption={this.state.selected}
+                    setSelectedFilterOption={this.setSelectedFilterOption}
                     selected={this.state.selected}
                 />
              </div>
