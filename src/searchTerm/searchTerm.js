@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PrintType from '../printType/printType';
+import BookType from '../bookType/bookType';
 
 //import PrintType from '../printType/printType';
 
@@ -10,10 +10,15 @@ class SearchTerm extends Component {
             searchTerm: 'flowers',
             printType: [],
             data: [],
+            selected: null
             
         }
     }
 
+    setSelectedFilterOption = selected => {
+        this.setState({ selected });
+        console.log('filter:' + selected)
+    }
     setSearchTerm(searchTerm) {
         this.setState({ searchTerm });
     }
@@ -52,11 +57,12 @@ class SearchTerm extends Component {
                    value={this.state.searchTerm}
                    onChange={e => this.setSearchTerm(e.target.value)}/>
                  <button>Search</button>
-               </form>
-                <PrintType 
+               </form><br />
+                <BookType 
                     entireBookList={this.state.data}
-                    changePrintTypeHandler={printType => this.setSelectedPrintType(printType)}
-                    />
+                    setSelectedFilterOption={this.state.selected}
+                    selected={this.state.selected}
+                />
              </div>
            );
         }

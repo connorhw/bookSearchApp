@@ -11,7 +11,6 @@ class PrintType extends Component {
     }
     
     render() {
-        console.log(this.props.entireBookList)
     /*
        const options = this
              .props
