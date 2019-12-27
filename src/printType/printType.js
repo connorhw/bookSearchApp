@@ -11,13 +11,15 @@ class PrintType extends Component {
     }
     
     render() {
+        console.log(this.props.entireBookList)
+    /*
        const options = this
              .props
              .entireBookList
              .map(
                (printType, i) => <option value={printType} key={i}>{printType}</option>
              );
-
+    */
         return(
             <div className='print_type'>
                 <label htmlFor='print'>Print Type: </label>
@@ -26,7 +28,7 @@ class PrintType extends Component {
                   name='print'
                   onChange={e => this.changeTypeFilter(e.target.value)}>
                   <option value='None'>All</option>
-                  {options}
+                  {/*options*/}
                 </select>
             </div>
         )
