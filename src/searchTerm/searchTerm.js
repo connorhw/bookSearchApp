@@ -36,7 +36,10 @@ class SearchTerm extends Component {
            e.preventDefault();
            this.generateAPIurl(this.state.searchTerm);
          };
-       
+
+    setSelectedPrintType(printType) {
+        this.setState({ printType });
+    }
          render() {
            return (
              <div className="term_selector">
@@ -52,6 +55,7 @@ class SearchTerm extends Component {
                </form>
                 <PrintType 
                     entireBookList={this.state.data}
+                    changePrintTypeHandler={printType => this.setSelectedPrintType(printType)}
                     />
              </div>
            );
