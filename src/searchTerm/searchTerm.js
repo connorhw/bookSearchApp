@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import BookType from '../bookType/bookType';
-
-//import PrintType from '../printType/printType';
+import BookList from '../bookList/bookList';
 
 class SearchTerm extends Component {
     constructor(props) {
@@ -17,7 +16,7 @@ class SearchTerm extends Component {
 
     setSelectedFilterOption = selected => {
         this.setState({ selected });
-        console.log('filter:' + selected)
+        console.log('filter:' + selected) //console the filter type selected
     }
     setSearchTerm(searchTerm) {
         this.setState({ searchTerm });
@@ -27,7 +26,9 @@ class SearchTerm extends Component {
         if (this.state.selected !== "None") {
                let filterSegment = "&filter=" + this.state.selected;
                url += filterSegment;
+                console.log(url) //hit search again in order to see url with filter parameters
         }
+        
         fetch(url)
             .then(response => {
                 if(!response.ok) {
@@ -37,7 +38,7 @@ class SearchTerm extends Component {
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                console.log(data); //see original array in console
                 this.setState({data: data.items})
             });
     }
@@ -67,6 +68,7 @@ class SearchTerm extends Component {
                     setSelectedFilterOption={this.setSelectedFilterOption}
                     selected={this.state.selected}
                 />
+                <BookList />
              </div>
            );
         }
